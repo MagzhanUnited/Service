@@ -9,8 +9,10 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  // ignore: unused_field
   final UserController _userController = Get.put(UserController());
-  var _productController = Get.put(ProductsController());
+  // ignore: unused_field
+  final _productController = Get.put(ProductsController());
   MyApp({super.key});
 
   @override
@@ -21,7 +23,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: ScaffoldPage(),
+      home: const ScaffoldPage(),
     );
   }
 }

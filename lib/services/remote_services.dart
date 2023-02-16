@@ -106,4 +106,21 @@ class RemoteServices extends GetConnect {
     }
     return null;
   }
+
+  static Future<bool> editingProduct(ProductModule product) async {
+    var updated = await client.put(
+        '$_baseUrl/editingProduct/', productModuleToJson(product));
+    if (updated.statusCode == 200) {
+      return true;
+    }
+    return false;
+  }
+
+  static Future<List<ProductModule>?> bestProducts() async {
+    var response = await client.get('$_baseUrl/bestProduct/');
+    if (response.statusCode == 200) {
+      return productsModuleFromJson(response.bodyString!);
+    }
+    return null;
+  }
 }

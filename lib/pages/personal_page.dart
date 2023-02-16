@@ -24,9 +24,9 @@ class PersonalPage extends StatelessWidget {
   Widget _page() {
     return Column(
       children: [
-        _exist(),
+        //_exist(),
         _personalInf(),
-        SizedBox(
+        const SizedBox(
           height: 30,
         ),
         _support()
@@ -34,14 +34,16 @@ class PersonalPage extends StatelessWidget {
     );
   }
 
-  Widget _exist() {
+  /*Widget _exist() {
     return Row(
       children: [
         Expanded(child: Container()),
         Container(
           padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+          decoration: BoxDecoration(
+              color: Colors.blue, borderRadius: BorderRadius.circular(10)),
           child: Row(
-            children: [
+            children: const [
               Text(
                 'Шығу',
                 style: TextStyle(color: Colors.white),
@@ -53,12 +55,10 @@ class PersonalPage extends StatelessWidget {
               )
             ],
           ),
-          decoration: BoxDecoration(
-              color: Colors.blue, borderRadius: BorderRadius.circular(10)),
         )
       ],
     );
-  }
+  }*/
 
   Widget _personalInf() {
     return Row(
@@ -113,13 +113,8 @@ class PersonalPage extends StatelessWidget {
             margin: EdgeInsets.only(bottom: 10),
             width: 80,
             height: 80,
-            child: Icon(
-              _icon,
-              color: Colors.white,
-              size: 35,
-            ),
             decoration: BoxDecoration(
-                boxShadow: [
+                boxShadow: const [
                   BoxShadow(
                     color: Colors.grey,
                     offset: Offset(3.0, 3.0),
@@ -128,6 +123,11 @@ class PersonalPage extends StatelessWidget {
                 ],
                 color: Color(0xff7F86FF),
                 borderRadius: BorderRadius.circular(15)),
+            child: Icon(
+              _icon,
+              color: Colors.white,
+              size: 35,
+            ),
           ),
           Text(_text)
         ],

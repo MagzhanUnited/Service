@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:flutter_everything/controllers/user_controller.dart';
 import 'package:flutter_everything/inner_pages/main_inner_page.dart';
 import 'package:flutter_everything/inner_pages/personal_inners/edit_page.dart';
 import 'package:flutter_everything/moduls/person_module.dart';
@@ -9,9 +6,9 @@ import 'package:flutter_everything/moduls/product_module.dart';
 import 'package:flutter_everything/my_flutter_app_icons.dart';
 import 'package:flutter_everything/services/remote_services.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:get/route_manager.dart';
 
+// ignore: must_be_immutable
 class ProductWidget extends StatefulWidget {
   ProductModule productData;
   IconData? iconDelete;
@@ -133,29 +130,16 @@ class _ProductWidgetState extends State<ProductWidget> {
                     },
                     icon: snapshot.data!.liked != null
                         ? snapshot.data!.liked!.contains(widget.productData.id!)
-                            ? Icon(
+                            ? const Icon(
                                 NewIcons.heart,
                                 color: Colors.red,
                               )
                             : Icon(NewIcons.heart_empty)
                         : Icon(NewIcons.heart_empty)),
               )
-            : Icon(NewIcons.heart_empty),
+            : const Icon(NewIcons.heart_empty),
         const SizedBox(width: 30)
       ],
-    );
-  }
-
-  _textWidget(String title) {
-    return Container(
-      padding: EdgeInsets.all(10),
-      margin: EdgeInsets.symmetric(horizontal: 20),
-      decoration: BoxDecoration(
-          color: Color(0xff7F86FF), borderRadius: BorderRadius.circular(15)),
-      child: Text(
-        title,
-        style: TextStyle(color: Colors.white),
-      ),
     );
   }
 

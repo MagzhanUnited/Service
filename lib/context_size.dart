@@ -7,5 +7,6 @@ class ContextSize {
   static void init(BuildContext context) {
     _absoluteHeight = context.mediaQuerySize.height;
   }
-  
+
+  static double height = _absoluteHeight;
 }
