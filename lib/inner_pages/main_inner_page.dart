@@ -2,15 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_everything/lines.dart';
+import 'package:flutter_everything/message_features/direct_page.dart';
 import 'package:flutter_everything/moduls/person_module.dart';
 import 'package:flutter_everything/moduls/product_module.dart';
 import 'package:flutter_everything/my_flutter_app_icons.dart';
 import 'package:flutter_everything/services/remote_services.dart';
+import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/route_manager.dart';
 
+import '../controllers/user_controller.dart';
+
 class MainInnerPage extends StatelessWidget {
   ProductModule productData;
+  UserController person = Get.find();
   MainInnerPage({super.key, required this.productData});
 
   @override
@@ -33,7 +38,7 @@ class MainInnerPage extends StatelessWidget {
                           _briethDescription(),
                           HorizontalLinee(),
                           _comment(),
-                          _sellerName(snapshot.data!.fullname!),
+                          _sellerName(snapshot.data!),
                         ],
                       ),
                     )),
@@ -157,7 +162,7 @@ class MainInnerPage extends StatelessWidget {
     );
   }
 
-  Widget _sellerName(String fullname) {
+  Widget _sellerName(PersonModule _person) {
     return Container(
       margin: EdgeInsets.only(top: 30),
       child: Row(
@@ -168,7 +173,7 @@ class MainInnerPage extends StatelessWidget {
           ),
           SizedBox(width: 10),
           Text(
-            fullname,
+            _person.fullname!,
             style: TextStyle(fontWeight: FontWeight.bold),
           )
         ],
@@ -180,17 +185,24 @@ class MainInnerPage extends StatelessWidget {
     return Row(
       children: [
         Expanded(child: SizedBox()),
-        Container(
-          width: 260,
-          height: 55,
-          child: Center(
-            child: Text(
-              'Написать',
-              style: TextStyle(color: Colors.white, fontSize: 20),
+        GestureDetector(
+          onTap: () => person.userData.value == null
+              ? Get.snackbar('Авторизуйтесь', 'если хотите отправить сообщение')
+              : Get.to(DirectPage(
+                  product: productData,
+                )),
+          child: Container(
+            width: 260,
+            height: 55,
+            child: Center(
+              child: Text(
+                'Написать',
+                style: TextStyle(color: Colors.white, fontSize: 20),
+              ),
             ),
+            decoration: BoxDecoration(
+                color: Colors.blue, borderRadius: BorderRadius.circular(15)),
           ),
-          decoration: BoxDecoration(
-              color: Colors.blue, borderRadius: BorderRadius.circular(15)),
         ),
         SizedBox(width: 30),
         _buttom(),

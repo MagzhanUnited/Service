@@ -2,6 +2,7 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_everything/context_size.dart';
 import 'package:flutter_everything/inner_pages/main_inner_page.dart';
+import 'package:flutter_everything/inner_pages/main_inners/car_search.dart';
 import 'package:flutter_everything/moduls/product_module.dart';
 import 'package:flutter_everything/services/remote_services.dart';
 import 'package:flutter_everything/widgets/bar_widgets.dart';
@@ -71,33 +72,35 @@ class _EverythingState extends State<Everything> {
     return FutureBuilder(
       initialData: [],
       future: RemoteServices.bestProducts(),
-      builder: (context, snapshot) => Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          SizedBox(height: 30),
-          Padding(
-            padding: const EdgeInsets.only(right: 200),
-            child: Text(
-              'Популярные и новинки',
-              style: TextStyle(color: Colors.grey[600], fontSize: 15),
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(top: 20, bottom: 40),
-            height: ContextSize.height * 0.3,
-            child: snapshot.data == null
-                ? Container()
-                : PageView.builder(
-                    controller: pageController,
-                    itemCount: snapshot.data!.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return _buildPageItem(index, snapshot.data![index]);
-                    },
+      builder: (context, snapshot) => snapshot.data != null
+          ? Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SizedBox(height: 30),
+                Padding(
+                  padding: const EdgeInsets.only(right: 200),
+                  child: Text(
+                    'Популярные и новинки',
+                    style: TextStyle(color: Colors.grey[600], fontSize: 15),
                   ),
-          ),
-          _dots(snapshot.data!.length),
-        ],
-      ),
+                ),
+                Container(
+                  margin: EdgeInsets.only(top: 20, bottom: 40),
+                  height: ContextSize.height * 0.3,
+                  child: snapshot.data == null
+                      ? Container()
+                      : PageView.builder(
+                          controller: pageController,
+                          itemCount: snapshot.data!.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            return _buildPageItem(index, snapshot.data![index]);
+                          },
+                        ),
+                ),
+                _dots(snapshot.data!.length),
+              ],
+            )
+          : CircularProgressIndicator(),
     );
   }
 
@@ -121,7 +124,9 @@ class _EverythingState extends State<Everything> {
     return Row(
       children: [
         BarWidgets(
-            icon: Icons.directions_car, title: 'Машины', func: () => func()),
+            icon: Icons.directions_car,
+            title: 'Машины',
+            func: () => Get.to(CarSearch())),
         BarWidgets(
             icon: Icons.cases_outlined, title: 'запчасти', func: () => func()),
         BarWidgets(

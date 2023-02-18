@@ -123,4 +123,14 @@ class RemoteServices extends GetConnect {
     }
     return null;
   }
+
+  static Future<List<ProductModule>?> searchingProduct(
+      String product, String words) async {
+    var response =
+        await client.get('$_baseUrl/searchingProduct/${product}/${words}/');
+    if (response.statusCode == 200) {
+      return productsModuleFromJson(response.bodyString!);
+    }
+    return null;
+  }
 }

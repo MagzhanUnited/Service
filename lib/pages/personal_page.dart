@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:flutter_everything/inner_pages/personal_inners/settings_page.dart';
 import 'package:flutter_everything/inner_pages/reg_inner_page.dart';
 import 'package:flutter_everything/message_features/ai_manager.dart';
 import 'package:flutter_everything/widgets/suggest_reg_page.dart';
@@ -98,7 +99,7 @@ class PersonalPage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           _supportWidgets('Мои обьявления', Icons.shopping_bag, MyAds()),
-          _supportWidgets('Настройки', Icons.settings, MyAds()),
+          _supportWidgets('Настройки', Icons.settings, SettingsPage()),
           _supportWidgets('Помощник', Icons.support_agent, AIManager())
         ],
       ),

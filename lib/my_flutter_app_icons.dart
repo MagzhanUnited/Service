@@ -23,10 +23,16 @@ class NewIcons {
   NewIcons._();
 
   static const _kFontFam = 'MyFlutterApp';
+  static const _kFontFam2 = 'MyFlutterAppp';
   static const String? _kFontPkg = null;
 
   static const IconData heart_empty =
       IconData(0xe800, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData heart =
       IconData(0xe801, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+
+  static const IconData moon =
+      IconData(0xe800, fontFamily: _kFontFam2, fontPackage: _kFontPkg);
+  static const IconData moon_inv =
+      IconData(0xe801, fontFamily: _kFontFam2, fontPackage: _kFontPkg);
 }

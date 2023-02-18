@@ -14,7 +14,6 @@ class MyApp extends StatelessWidget {
   // ignore: unused_field
   final _productController = Get.put(ProductsController());
   MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
