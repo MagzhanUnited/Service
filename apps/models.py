@@ -35,4 +35,4 @@ class PersonMessage(models.Model):
     created = models.DateTimeField(auto_now_add=True, null=True)
     
     class Meta:
-        ordering = ['-created']
+        ordering = ['created']
