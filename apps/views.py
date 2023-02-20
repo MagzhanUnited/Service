@@ -1,12 +1,12 @@
+#Part by Yeltore CRUD application
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.decorators import api_view
 from .models import Person, Product, Message, PersonMessage
 from .serializers import PersonSerializer, ProductSerializer, MessageSerializer, PersonMessageSerializer
 import openai
-#HelloItsMEEE
 openai.api_key = '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'
-#HelloItsME
+
 @api_view(['GET'])
 def getPersons(request):
     persons = Person.objects.all()
