@@ -13,9 +13,9 @@ class ProductSerializer(serializers.ModelSerializer):
 
 class MessageSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Message
+        model = Message # Using the Message model
         fields = '__all__'
 class PersonMessageSerializer(serializers.ModelSerializer):
     class Meta:
-        model = PersonMessage
-        fields = '__all__'
+        model = PersonMessage # Using the PersonMessage model
+        fields = '__all__' # Serializing all the fields of the model
