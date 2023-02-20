@@ -1,10 +1,10 @@
+#Part by Yeltore CRUD application
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.decorators import api_view
 from .models import Person, Product, Message, PersonMessage
 from .serializers import PersonSerializer, ProductSerializer, MessageSerializer, PersonMessageSerializer
 import openai
-
 openai.api_key = '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'
 
 @api_view(['GET'])
@@ -178,7 +178,7 @@ def getMessages(request, id):
     message = Message.objects.filter(user = id)
     serializer = MessageSerializer(message, many = True)
     return Response(serializer.data)
-
+#new
 @api_view(['GET'])
 def theBest(request):
     bestProduct = Product.objects.filter(isBest = 1)
